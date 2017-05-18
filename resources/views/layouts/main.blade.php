@@ -12,8 +12,21 @@
     @if(Auth::user())
         @include('partials.adminNavbar')
     @endif
-
-    @include('partials.navbar')
+    <header style="background: url('img/hpbg.jpg') no-repeat center center; background-size: cover;">
+        <div style="background-color: rgba(0,60,145,0.8);">
+            @include('partials.navbar')
+            <div class="container" style="padding:50px 15px;">
+                <div class="row">
+                    <div class="col-8 offset-sm-2 text-center">
+                        @if(!empty($isFront) && $isFront && !empty($welcomeBlock))
+                            <h1 style="color: goldenrod;">{{$welcomeBlock[0]->title}}</h1>
+                            <p class="text-white">{!!nl2br(e($welcomeBlock[0]->body))!!}</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <main class="container{{ Auth::user() ? ' admin-bar' : '' }}">
         <div class="row">

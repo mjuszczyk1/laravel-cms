@@ -56,7 +56,7 @@ class BlockController extends Controller
         $block->author_id = auth()->user()->id;
         $block->save();
 
-        return !empty($request['page_slug']) ? redirect("/page/" . $request['page_slug']) : redirect("/block");
+        return redirect("/block/{$block->id}");
     }
 
     /**
@@ -76,9 +76,9 @@ class BlockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Block $block)
     {
-        //
+        return view('blocks.edit', compact('block'));
     }
 
     /**
@@ -90,7 +90,29 @@ class BlockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $block = Block::where('id', $id)->get();
+
+        // If title hasn't changed, we don't want to check if uniuqe:
+        if($request['title'] == $block[0]->getOriginal('title')) {
+            $titleValidate = 'bail|required|max:255';
+        } else {
+            $titleValidate = 'bail|required|unique:pages,title|max:255';
+        }
+
+        $this->validate($request, [
+            'title' => $titleValidate,
+            'body' => 'required',
+        ]);
+
+        $block[0]->title     = $request->title;
+        $block[0]->body      = $request->body;
+        $block[0]->area      = $request->area;
+        $block[0]->weight    = $request->weight;
+        $block[0]->page_slug = $request->page_slug;
+        $block[0]->author_id = auth()->user()->id;
+        $block[0]->save();
+
+        return redirect("/block/".$block[0]['id']);
     }
 
     /**

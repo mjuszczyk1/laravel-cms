@@ -14,7 +14,7 @@ class Block extends Model
     public function url($action = null)
     {
         if (!empty($action)) {
-            return "/page/{$action}/{$this->id}";
+            return "/block/{$action}/{$this->id}";
         } else {
             return "/block/{$this->id}";
         }
