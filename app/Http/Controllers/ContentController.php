@@ -8,10 +8,12 @@ class ContentController extends Controller
 {
     public function home()
     {
-        $welcomeBlock = Block::where('page_slug', '=', 'homepage')->get();
-        $cta1         = Block::where('area', '=', 'cta1')->get();
-        $cta2         = Block::where('area', '=', 'cta2')->get();
-        $cta3         = Block::where('area', '=', 'cta3')->get();
+        $welcomeBlock = Block::where('page_slug', '=', 'homepage')
+                                ->where('area', '=', 'hero')
+                                ->first();
+        $cta1         = Block::where('area', '=', 'cta1')->first();
+        $cta2         = Block::where('area', '=', 'cta2')->first();
+        $cta3         = Block::where('area', '=', 'cta3')->first();
         return view('content.home', array(
             'isFront'      => true,
             'welcomeBlock' => $welcomeBlock,

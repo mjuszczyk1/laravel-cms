@@ -10,7 +10,8 @@
 
 <article>
     <div class="page-header">
-        <h1 class="d-inline-block">{{$data[0]->title}}</h1>
+        {{-- <h1 class="d-inline-block">{{$data[0]->title}}</h1> --}}
+        {{-- Title comes from the @section('title') above, and gets placed in layouts.main --}}
         @if(Auth::user())
             <div class="post-controls d-inline-block float-right mt-2">
                 <button class="btn btn-warning p-0"><a href="{{$data[0]->url('edit')}}" class="d-block py-2 px-3 text-white">Edit</a></button>

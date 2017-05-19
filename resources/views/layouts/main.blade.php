@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CEN - @yield('title', 'Homepage')</title>
+    <title>
+        @hasSection('title')
+            @yield('title') - CEN
+        @else
+            CEN
+        @endif
+    </title>
     <link rel="stylesheet" href="/css/master.css">
 </head>
 <body>
@@ -18,9 +24,11 @@
             <div class="container" style="padding:50px 15px;">
                 <div class="row">
                     <div class="col-8 offset-sm-2 text-center">
-                        @if(!empty($isFront) && $isFront && !empty($welcomeBlock))
-                            <h1 style="color: goldenrod;">{{$welcomeBlock[0]->title}}</h1>
-                            <p class="text-white">{!!nl2br(e($welcomeBlock[0]->body))!!}</p>
+                        @if(!empty($welcomeBlock))
+                            <h1 style="color: goldenrod;">{{$welcomeBlock->title}}</h1>
+                            <p class="text-white">{!!nl2br(e($welcomeBlock->body))!!}</p>
+                        @else
+                            <h1 style="color: goldenrod;">@yield('title')</h1>
                         @endif
                     </div>
                 </div>

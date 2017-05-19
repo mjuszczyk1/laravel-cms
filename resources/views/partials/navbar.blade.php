@@ -3,7 +3,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/"><img src="img/cen-white-trans-logo.png" /></a>
+        <a class="navbar-brand" href="/"><img src="/img/cen-white-trans-logo.png" /></a>
         <div class="collapse navbar-collapse" id="main-nav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>

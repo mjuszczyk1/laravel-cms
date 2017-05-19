@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('title')
-Different titles can go here.
 @endsection
 
 @section('content')
@@ -9,12 +8,44 @@ Different titles can go here.
         <div class="row">
             @foreach($ctas as $cta)
                 <div class="col-4 text-center">
-                    <h1>{{$cta[0]->title}}</h1>
-                    <p>{{$cta[0]->body}}</p>
+                    <h1>{{$cta->title}}</h1>
+                    <p>{{$cta->body}}</p>
                 </div>
             @endforeach
         </div>
     @endif
+
+    <form method="POST" action="requestConsult" class="row">
+        <div class="col-12">
+            <h2>Request a Consultation</h2>
+        </div>
+        {{csrf_field()}}
+        <div class="form-group col-6">
+            <label for="fullName">Full Name</label>
+            <input type="text" class="form-control" id="fullName" name="fullName" value="{{old('fullName')}}" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{old('phone')}}" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="email">Email Address</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{old('email')}}" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="unit">OSE Unit / GFI</label>
+            <input type="text" class="form-control" id="unit" name="unit" value="{{old('unit')}}" required>
+        </div>
+        <div class="form-group col-8">
+            <label for="need">What is your communication need?</label>
+            <input type="text" class="form-control" id="need" name="need" value="{{old('need')}}" required>
+        </div>
+        <div class="form-group col-4 mt-2">
+            <br>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+    </form>
+</form>
 @endsection
 
 @section('scripts')

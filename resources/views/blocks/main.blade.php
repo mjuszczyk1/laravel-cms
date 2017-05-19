@@ -23,13 +23,15 @@
         <hr>
         @if(!empty($block->area))
            <p><strong>Area</strong>: {{$block->area}}</p>
+           <hr>
         @endif
-        <hr>
         @if(!empty($block->page_slug))
            <p><strong>Page Slug</strong>: <a href="/page/{{$block->page_slug}}">{{$block->page_slug}}</a></p>
+           <hr>
         @endif
-        <hr>
-       <p><strong>Weight</strong>: {{$block->weight}}</p>
+        {{-- @if(!empty($block->weight)) --}}
+           <p><strong>Weight</strong>: {{$block->weight}}</p>
+        {{-- @endif --}}
     </div>
 </article>
 

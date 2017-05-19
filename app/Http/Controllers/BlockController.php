@@ -43,7 +43,7 @@ class BlockController extends Controller
             'title'     => 'bail|required|max:255',
             'area'      => 'max:255',
             'body'      => 'required',
-            'page_slug' => 'regex:/^[a-zA-z-0-9]+$/|max:255',
+            'page_slug' => 'nullable|regex:/^[a-zA-z-0-9]+$/|max:255',
             'weight'    => 'nullable|integer',
         ]);
 
@@ -51,7 +51,9 @@ class BlockController extends Controller
         $block->title     = $request->title;
         $block->body      = $request->body;
         $block->area      = $request->area;
-        $block->weight    = $request->weight;
+        if (!empty($request->weight)) {
+            $block->weight = $request->weight;
+        }
         $block->page_slug = $request->page_slug;
         $block->author_id = auth()->user()->id;
         $block->save();
@@ -115,6 +117,17 @@ class BlockController extends Controller
         return redirect("/block/".$block[0]['id']);
     }
 
+     /**
+     * Confirm user's delete action
+     *
+     * @param Block $block
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyConfirm(Block $block)
+    {
+        return view('blocks.destroyConfirm', compact('block'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -123,6 +136,7 @@ class BlockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Block::where('id', $id)->delete();
+        return redirect('/block');
     }
 }
