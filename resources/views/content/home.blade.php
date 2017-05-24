@@ -4,16 +4,15 @@
 @endsection
 
 @section('content')
-    @if(!empty($ctas))
+    @unless(empty($ctas))
         <div class="row">
             @foreach($ctas as $cta)
-                <div class="col-4 text-center">
-                    <h1>{{$cta->title}}</h1>
-                    <p>{{$cta->body}}</p>
-                </div>
+                @unless(empty($cta))
+                    @include('blocks.embed.cta')
+                @endunless
             @endforeach
         </div>
-    @endif
+    @endunless
 
     <form method="POST" action="requestConsult" class="row">
         <div class="col-12">
@@ -42,7 +41,7 @@
         </div>
         <div class="form-group col-4 mt-2">
             <br>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn ml-auto">Submit</button>
         </div>
     </form>
 </form>

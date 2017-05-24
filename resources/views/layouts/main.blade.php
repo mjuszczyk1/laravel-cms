@@ -52,6 +52,40 @@
             @endif
         </div>
     </main>
+    <footer class="py-4 mt-5" style="background: darkslategray;">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-4">
+                    <p><a href="/"><img src="/img/cen-white-trans-logo.png" /></a></p>
+                    <p>Toll Free: 888-463-7656</p>
+                    <p>Local: 517-908-3900</p>
+                    <p>Fax: 517-908-0703</p>
+                    <p><a href="mailto:info@cenmi.org" class="text-white">info@cenmi.org</a></p>
+                </div>
+                <div class="col-8">
+                    <nav class="nav justify-content-end">
+                        <a class="nav-link text-white" href="/">Home</a>
+                        <a class="nav-link text-white" href="/page/about">About</a>
+                        <a class="nav-link text-white" href="/page/contact">Contact</a>
+                    </nav>
+                    <form class="row mt-5">
+                        <div class="form-group col-9 offset-sm-1">
+                            <input type="text" placeholder="Search for Information" class="form-control">
+                        </div>
+                        <div class="form-group col-2">
+                            <button type="submit" class="btn">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p class="float-left">6412 Centurion Drive, Suite 130, Lansing, MI 48917</p>
+                    <p class="float-right">&copy; Center for Educational Networking | <a href="/login" class="font-bold text-white">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
     {{-- <script type="text/javascript" src="/js/app.js"></script> --}}
     <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>

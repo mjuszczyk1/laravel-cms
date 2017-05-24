@@ -14,6 +14,7 @@ class ContentController extends Controller
         $cta1         = Block::where('area', '=', 'cta1')->first();
         $cta2         = Block::where('area', '=', 'cta2')->first();
         $cta3         = Block::where('area', '=', 'cta3')->first();
+        $ctas = array($cta1, $cta2, $cta3);
         return view('content.home', array(
             'isFront'      => true,
             'welcomeBlock' => $welcomeBlock,
